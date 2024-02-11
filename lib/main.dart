@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:brand_names/services/socket_io_service.dart';
 
 import 'package:brand_names/screens/index.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => SocketIoService(),
+      )
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,6 +31,7 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/": (_) => const HomeScreen(),
+        "/status": (_) => const StatusScreen()
       },
     );
   }

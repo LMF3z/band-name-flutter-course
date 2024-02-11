@@ -11,9 +11,9 @@ class BandModel {
 
   factory BandModel.fromMap(Map<String, dynamic> obj) {
     return BandModel(
-      id: obj['id'],
-      name: obj['name'],
-      votes: obj['votes'],
+      id: obj['id'] ?? 'no-id',
+      name: obj['name'] ?? 'no-name',
+      votes: obj['votes'] ?? 'no votes',
     );
   }
 }
